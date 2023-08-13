@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N-queens</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="Back">
+        <h2><a href="NQueenRule.html"> Read the rules</a></h2>
+    </div>
+
+    <h5 class="head">N-Queens Problem</h5>
+    <div class="head">
+        <div id="queenList" class="queen-list">
+            <h3>Queen List:</h3>
+            <ul id="queens">
+              <!-- The list of queens will be displayed here -->
+            </ul>
+          </div>
+          
+      <h4 class="head">Create your desired board size</h4>
+      <label for="inputN" class="text"
+        >Enter the value of N(between 4 and 29): </label
+      ><br /><br />
+      <input type="number" id="boardSize" class="text" min="4" max="29" />
+      <button id="create" class="text">Create</button>
+    </div>
+    <div class="chessboard" id="chessboard"></div>
+    
+    <div id="queenCount">Queens Placed: 0</div>
+    <br />
+
+    <div class="foot text">
+      <label for="inputN">Enter the value of N(between 4 and 29): </label
+      ><br /><br />
+      <input type="number" id="inputN" min="4" max="39" />
+
+      <button onclick="solveNQueen()"> Solve</button>
+      <div id="queensCount"></div>
+     
+
+      </div>
+    </div>
+
+    <div id="solutionOutput"></div>
+    <br />
+
+    <div id="executionTime"></div>
+
+    <div class="solvechessboard" id="solvechessboard"></div>
+
+
+    <script src="script.js"></script>
+
+    <script src="Nqueen.js"></script>
+    <script src="SolveP.js">
+
+    </script>
+  </body>
+</html>

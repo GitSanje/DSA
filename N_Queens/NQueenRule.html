@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>N-Queens Problem</title>
+  
+
+  <link rel="stylesheet" href="Rule.css">
+</head>
+<body>
+  <h1>N-Queens Problem</h1>
+  <h2>How to play this game <a href="QueensP.html">Play the game</a></h2>
+
+  <div class="rule-container">
+    <div class="rule">
+      <span class="rule-number">1.</span>
+      <span class="rule-text">Start with an empty N×N chessboard.</span>
+    </div>
+    <div class="rule">
+      <span class="rule-number">2.</span>
+      <span class="rule-text">Place one queen in each row, starting from the first row.</span>
+    </div>
+    <div class="rule">
+      <span class="rule-number">3.</span>
+      <span class="rule-text">For each queen:</span>
+    </div>
+    <div class="nested-rule">
+      <div class="rule">
+        <span class="rule-number">-</span>
+        <span class="rule-text">Place it in an unoccupied square within its row.</span>
+      </div>
+      <div class="rule">
+        <span class="rule-number">-</span>
+        <span class="rule-text">Ensure that no other queen shares the same column or diagonal with the current queen.</span>
+      </div>
+      <div class="rule">
+        <span class="rule-number">-</span>
+        <span class="rule-text">If a conflict is found, try a different square in the same row.</span>
+      </div>
+      <div class="rule">
+        <span class="rule-number">-</span>
+        <span class="rule-text">If all squares in the row are exhausted, backtrack to the previous queen and try a different square for it.</span>
+      </div>
+    </div>
+    <div class="rule">
+      <span class="rule-number">4.</span>
+      <span class="rule-text">Repeat this process until all queens are successfully placed on the board without any conflicts.</span>
+    </div>
+    <div class="rule">
+      <span class="rule-number">5.</span>
+      <span class="rule-text">If a valid placement of N queens is achieved, it represents a solution to the N-queens problem.</span>
+    </div>
+    <div class="rule">
+      <span class="rule-number">6.</span>
+      <span class="rule-text">If it is not possible to place all queens without conflicts, then no solution exists for the given N.</span>
+    </div>
+<div class="rule">
+    <img src="https://www.deepnet42.com/images/eightqueens/solutions8x8/solutions.gif"/>
+  </div>
+
+
+</div>
+
+  <!-- Additional content goes here -->
+
+</body>
+</html>

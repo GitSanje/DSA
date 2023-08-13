@@ -1,0 +1,199 @@
+/* :root{
+--size:8;
+} */
+/*Light Gray: #F5F5F5
+Pale Blue: #ECEFF1
+Off-White: #F9F9F9
+Light Beige: #F5F5DC
+*/
+body{
+    
+    background-color: #ECEFF1;
+}
+.chessboard{
+    display: grid;
+    /* grid-template-columns: repeat(var(--size), 1fr);
+    grid-template-rows: repeat(var(--size), 1fr); */
+    width: 400px;
+    height: 400px;
+ 
+    margin: 20px auto;
+    /* border: 1px solid black; */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+   
+}
+
+.solvechessboard{
+
+ 
+    display: grid;
+
+    width: 400px;
+    height: 400px;
+ 
+    margin: 20px auto;
+    /* border: 1px solid black; */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+   
+
+}
+
+.Sqr {
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+ .square {
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.square:hover {
+    background-color: red;
+  }
+
+/* .chessboard .square:nth-child(2n) {
+    background-color: #ccc;
+}  */
+
+
+.queen {
+    color: rgb(90, 77, 77);
+  }
+  
+  .attacked {
+    background-color: red;
+  }
+.head{
+    font-size: 20px;
+    text-align: center;
+    color:rgb(90, 77, 77) ;
+}
+  
+
+#queenCount{
+    color: rgb(90, 77, 77);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+.square.attacked-row,
+.square.attacked-column,
+.square.attacked-diagonal {
+  background-color: #ff0000; /* Change the color as desired */
+}
+  
+.square.hover {
+    background-color: #ffff00; /* Change the color as desired */
+  }
+  
+
+  
+  .square i {
+    pointer-events: none; /* Prevent the icon from interfering with square clicks */
+  }
+
+  .Board_size{
+    text-align: center;
+    font-size: 20px;
+    color: rgb(90, 77, 77);
+  }
+  
+  #solutionOutput {
+    font-family: monospace;
+    white-space: pre;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(90, 77, 77);
+  }
+
+  #executionTime {
+    font-family: monospace;
+    white-space: pre;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(90, 77, 77);
+  }
+
+  /* Styling for the label */
+label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(90, 77, 77);
+  }
+  
+  /* Styling for the input field */
+  input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    color: rgb(90, 77, 77);
+  }
+  
+  /* Styling for the solve button */
+  button {
+    padding: 10px 16px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button:active {
+    background-color: #3e8e41;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+
+  .text{
+    text-align: center;
+  }
+
+  .queen-list ul li{
+     list-style: none;
+     display: inline;
+     margin-left: 5px;
+  }
+
+  
+  .square.hover {
+    /* Square hover effect */
+    background-color: lightblue;
+  }
+  
+  .square.attacked-row {
+    /* Attacked row style */
+    background-color: yellow;
+  }
+  
+  .square.attacked-column {
+    /* Attacked column style */
+    background-color: orange;
+  }
+  
+  .square.attacked-diagonal {
+    /* Attacked diagonal style */
+    background-color: red;
+  }
+  
+
+  
+  
+  
+  

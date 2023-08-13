@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .chessboard {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      width: 400px;
+      height: 400px;
+    }
+
+    .square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      background-color: #eee;
+    }
+
+    .square:nth-child(odd) {
+      background-color: #ccc;
+    }
+ 
+  </style>
+</head>
+<body>
+  <div class="chessboard" id="chessboard"></div>
+
+  <script>
+    function createChessboard(n, queens) {
+      const chessboard = document.getElementById("chessboard");
+      chessboard.innerHTML = "";
+
+      for (let row = 0; row < n; row++) {
+        for (let col = 0; col < n; col++) {
+          const square = document.createElement("div");
+          square.classList.add("square");
+
+          // Check if the current square contains a queen
+          const isQueen = queens.some((queen) => queen.row === row && queen.col === col);
+          if (isQueen) {
+            const queenIcon = document.createElement("i");
+            queenIcon.classList.add("fas", "fa-chess-queen");
+            square.appendChild(queenIcon);
+          }
+
+          // Make the square clickable
+          square.addEventListener("click", () => {
+            // Handle the square click event here
+            console.log(`Clicked on square (${row}, ${col})`);
+          });
+
+          chessboard.appendChild(square);
+        }
+      }
+    }
+
+    // Usage: Call the createChessboard function with the desired board size and an array of queen positions
+    const boardSize = 8; // Example board size
+    const queens = [
+      { row: 0, col: 1 },
+      { row: 2, col: 3 },
+      { row: 4, col: 5 },
+      { row: 6, col: 7 },
+    ]; // Example queen positions
+    createChessboard(boardSize, queens);
+  </script>
+</body>
+</html>
