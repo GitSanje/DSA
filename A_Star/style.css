@@ -1,0 +1,33 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(20, 30px);
+    grid-template-rows: repeat(20, 30px);
+    gap: 1px;
+}
+
+.node {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background-color: white;
+}
+
+.start {
+    background-color: green;
+}
+
+.target {
+    background-color: red;
+}
+
+.obstacle {
+    background-color: black;
+}
+
+.path {
+    background-color: yellow;
+}
