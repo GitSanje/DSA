@@ -1,52 +1,54 @@
-def prec(c):
-	if c == '^':
-		return 3
-	elif c == '/' or c == '*':
-		return 2
-	elif c == '+' or c == '-':
-		return 1
-	else:
-		return -1
+def precedence(char):
+    if char == "^":
+        return 3
+    elif char == '*' or char == '/':
+        return 2
+    elif char == '+' or char == '-':
+        return 1
+    else:
+        return -1
+def associativity(char):
+    if char == "^":
+        return "R"
+    else:
+        return "L"
 
-def associativity(c):
-	if c == '^':
-		return 'R'
-	return 'L' # Default to left-associative
 
-def infix_to_postfix(s):
-	result = []
-	stack = []
+def InfixToPosfix(string):
 
-	for i in range(len(s)):
-		c = s[i]
+    stack = []
 
-		# If the scanned character is an operand, add it to the output string.
-		if ('a' <= c <= 'z') or ('A' <= c <= 'Z') or ('0' <= c <= '9'):
-			result.append(c)
-		# If the scanned character is an ‘(‘, push it to the stack.
-		elif c == '(':
-			stack.append(c)
-		# If the scanned character is an ‘)’, pop and add to the output string from the stack
-		# until an ‘(‘ is encountered.
-		elif c == ')':
-			while stack and stack[-1] != '(':
-				result.append(stack.pop())
-			stack.pop() # Pop '('
-		# If an operator is scanned
-		else:
-			while stack and (prec(s[i]) < prec(stack[-1]) or
-							(prec(s[i]) == prec(stack[-1]) and associativity(s[i]) == 'L')):
-				result.append(stack.pop())
-			stack.append(c)
+    postfixItems = []
+    for chr in string:
 
-	# Pop all the remaining elements from the stack
-	while stack:
-		result.append(stack.pop())
+        if chr.isalnum():
+            postfixItems.append(chr)
 
-	print(''.join(result))
+        elif len(stack) == 0 or stack[-1] == "(":
+               stack.append(chr)
+        elif precedence(chr) > precedence(stack[-1]) or (
+                       precedence(chr) == precedence(stack[-1]) and associativity(chr) == "R"):
 
-# Driver code
-exp = "a+b*(c^d-e)^(f+g*h)-i"
+             stack.append(chr)
+        else:
+            while stack and  stack[-1] != "(" and precedence(chr) <= precedence(stack[-1]):
+                popItem = stack.pop()
+                postfixItems.append(popItem)
+            stack.append(chr)
 
-# Function call
-infix_to_postfix(exp)
+        if chr == ")":
+            while stack and stack[-1] != "(":
+                popItem = stack.pop()
+                postfixItems.append(popItem)
+            stack.pop()
+
+
+    while stack:
+        postfixItems.append(stack.pop())
+
+
+    print("".join(postfixItems))
+
+
+test = "a+b*(c^d-e)^(f+g*h)-i"
+InfixToPosfix(test)
