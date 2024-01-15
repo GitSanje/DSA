@@ -19,36 +19,43 @@ def InfixToPosfix(string):
     stack = []
 
     postfixItems = []
-    for chr in string:
+    for char in string:
 
-        if chr.isalnum():
-            postfixItems.append(chr)
+        if char.isalnum():
+            postfixItems.append(char)
 
-        elif len(stack) == 0 or stack[-1] == "(":
-               stack.append(chr)
-        elif precedence(chr) > precedence(stack[-1]) or (
-                       precedence(chr) == precedence(stack[-1]) and associativity(chr) == "R"):
+        elif len(stack) == 0 or stack[-1] == "(" or char == "(":
+               stack.append(char)
 
-             stack.append(chr)
-        else:
-            while stack and  stack[-1] != "(" and precedence(chr) <= precedence(stack[-1]):
-                popItem = stack.pop()
-                postfixItems.append(popItem)
-            stack.append(chr)
-
-        if chr == ")":
+        elif char == ")":
             while stack and stack[-1] != "(":
                 popItem = stack.pop()
                 postfixItems.append(popItem)
             stack.pop()
+        else:
+            while stack and (precedence(char) < precedence(stack[-1]) or (
+                       precedence(char) == precedence(stack[-1]) and associativity(char) == "L")):
+                popItem = stack.pop()
+                postfixItems.append(popItem)
+            stack.append(char)
+
+
 
 
     while stack:
         postfixItems.append(stack.pop())
 
 
-    print("".join(postfixItems))
+    return "".join(postfixItems)
 
 
-test = "a+b*(c^d-e)^(f+g*h)-i"
-InfixToPosfix(test)
+
+
+
+if __name__ == '__main__':
+    s = "x+y*z/w+u"
+    test = "a+b*(c^d-e)^(f+g*h)-i"
+    test1 = "A*B+C/D"
+
+
+    print(InfixToPosfix(test))
