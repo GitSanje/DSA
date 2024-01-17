@@ -63,10 +63,11 @@ def putValues(string, values):
     res = ''
     for i, v in enumerate(string):
         if v.isalpha():
-            res += ' '+str(values.get(v)) + ' '
+            res += ' '+str(values.get(v))
         else:
             res += v
     return res
+
 def compute(x,y,op):
     operators = {'+': operator.add, '-': operator.sub, '*': operator.mul,
                  '^': operator.pow, '/': operator.floordiv}
@@ -77,50 +78,36 @@ def compute(x,y,op):
         print("Invalid operator")
 def ComputeExpression( expression,values):
 
-    preFix = InfixToPrefix(expression)
-    result = putValues(preFix, values)
-
-    print(reverseString(result))
+    result = InfixToPrefix(expression)
     stack = []
     for char in reversed(result):
-
-         if char.isnumeric():
+         if char.isalnum():
              stack.append(char)
-         elif char == ' ':
-             continue
-         else:
-             print("beforepop",stack)
-             x = stack.pop()
-             y = stack.pop()
-             print("afterpop",stack)
 
-             res = compute(int(x),int(y),char)
-             print("aftercompute", res)
+         else:
+             if isinstance(stack[-1],int) and isinstance(stack[-1],int) :
+                 x = stack.pop()
+                 y = stack.pop()
+             else:
+                 x = values.get(stack.pop())
+                 y = values.get(stack.pop())
+
+             res = compute(x,y,char)
              stack.append(res)
     return stack
-
-val2 = "a*b+c/d"
-values2 = {'a':5,'b':4,'c':8,'d':2}
-values = {'a':14,'b':19,'c':16,'d':2}
-
-print(ComputeExpression(val2, values))
-
-
 
 
 
 if __name__ == "__main__":
 
-    val2 = "a*b+c/d"
 
+    exps1= "k+l-m*n+(o^p)*w/u/v*t+q"
+    exps2 = "(a–b/c)*(a/k-l)"
+    exp3 = "a*b+c/d"
+    values = {'a': 14, 'b': 19, 'c': 16, 'd': 2}
+    print(ComputeExpression(exp3,values))
+    print("infixToPrefix",InfixToPrefix(exps2))
 
-    val3= "k+l-m*n+(o^p)*w/u/v*t+q"
-    val4 = "(a–b/c)*(a/k-l)"
-    s = "x+y*z/w+u"
-
-    # print(InfixToPrefix(s))
-    # print(InfixToPrefix(val4))
-    # print(InfixToPrefix(val3))
 
 
 

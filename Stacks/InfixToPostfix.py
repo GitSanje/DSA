@@ -1,3 +1,4 @@
+import  operator
 def precedence(char):
     if char == "^":
         return 3
@@ -51,11 +52,40 @@ def InfixToPosfix(string):
 
 
 
+def compute(x,y,op):
+    operators = {'+': operator.add, '-': operator.sub, '*': operator.mul,
+                 '^': operator.pow, '/': operator.floordiv}
+    if op in operators:
+        result = operators[op](x, y)
+        return  result
+    else:
+        print("Invalid operator")
+def ComputeExpression( expression,values):
+
+    result = InfixToPosfix(expression)
+    stack = []
+    for char in result:
+         if char.isalnum():
+             stack.append(char)
+
+         else:
+             if isinstance(stack[-1],int) and isinstance(stack[-1],int) :
+                 x = stack.pop()
+                 y = stack.pop()
+             else:
+                 x = values.get(stack.pop())
+                 y = values.get(stack.pop())
+
+             res = compute(y,x,char)
+             stack.append(res)
+    return stack
+
 
 if __name__ == '__main__':
     s = "x+y*z/w+u"
     test = "a+b*(c^d-e)^(f+g*h)-i"
-    test1 = "A*B+C/D"
-
-
-    print(InfixToPosfix(test))
+    exps1 = "k+l-m*n+(o^p)*w/u/v*t+q"
+    exp3 = "a*b+c/d"
+    values = {'a': 14, 'b': 19, 'c': 16, 'd': 2}
+    print(ComputeExpression(exp3, values))
+    print(InfixToPosfix(exps1))
