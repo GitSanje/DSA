@@ -104,9 +104,10 @@ if __name__ == "__main__":
     exps1= "k+l-m*n+(o^p)*w/u/v*t+q"
     exps2 = "(a–b/c)*(a/k-l)"
     exp3 = "a*b+c/d"
+    exps = "a*b+c/d*y+s*u"
     values = {'a': 14, 'b': 19, 'c': 16, 'd': 2}
     print(ComputeExpression(exp3,values))
-    print("infixToPrefix",InfixToPrefix(exps2))
+    print("infixToPrefix",InfixToPrefix(exps))
 
 
 

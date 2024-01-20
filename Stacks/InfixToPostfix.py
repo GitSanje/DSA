@@ -86,6 +86,7 @@ if __name__ == '__main__':
     test = "a+b*(c^d-e)^(f+g*h)-i"
     exps1 = "k+l-m*n+(o^p)*w/u/v*t+q"
     exp3 = "a*b+c/d"
+    exps = "a*b+c/d*y+s*u"
     values = {'a': 14, 'b': 19, 'c': 16, 'd': 2}
     print(ComputeExpression(exp3, values))
-    print(InfixToPosfix(exps1))
+    print(InfixToPosfix(exps))
