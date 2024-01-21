@@ -93,11 +93,8 @@ class BinaryTreeExp:
             node = self.root
             stack.append(('root',node.value))
 
-        if isinstance(node.left,str) :
-
-            stack.append(('leaf',node.left))
-        if isinstance(node.right, str):
-           stack.append(('leaf', node.right))
+        if isinstance(node,str) :
+            stack.append(('leaf',node))
         else:
             left_str = self.recurTree(node.left)
 
@@ -131,7 +128,7 @@ class BinaryTreeExp:
             return f"{left_str}{right_str}{node.value}"
 
 
-exps = "a*b+c/d*y+s*u" # prefix: ++*ab*/cdy*su, Postfix: ab*cd/y*+su*+
+exps = "a*b+c/d*y+s*u^l" # prefix: ++*ab*/cdy*su, Postfix: ab*cd/y*+su*+
 
 exptree = BinaryTreeExp()
 exptree.insert(exps)
