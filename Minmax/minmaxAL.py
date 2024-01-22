@@ -1,9 +1,12 @@
 
 ai = 'X'
 player = 'O'
-tic_tac_toe = [['O', 'O','X'],
-               ['O', 'X', ' '],
-               ['X', 'O', 'X'],]
+tic_tac_toe = [['O', 'X',' '],
+               ['X', 'X', 'O'],
+               [' ', 'O', ' '],]
+
+
+
 def checkDiagonal(state):
     L = len(state)
     c = L - 1
@@ -32,15 +35,66 @@ def checkCol(state):
         if x == y == z:
             return x
     return False
-
+def checkEmptyStr(state):
+    L= len(state)
+    for i in range(L):
+        if tic_tac_toe[0][i] == ' ' or tic_tac_toe[1][i] == ' ' or tic_tac_toe[2][i] == ' ':
+                return True
+    return False
 def checkWin(state):
    if checkDiagonal(state):
-       return "diag "+checkDiagonal(state)
+       return checkDiagonal(state)
    elif checkRow(state):
-       return "Row "+checkRow(state)
+       return checkRow(state)
    elif checkCol(state):
-       return "Col "+checkCol(state)
+       return checkCol(state)
+   elif checkEmptyStr(state) ==False:
+       return 'd'
    else:
        return False
 
-print(checkWin(tic_tac_toe))
+
+
+winners = {'X':1,'O':-1,'d':0}
+
+def Minmax(state,playerTurn):
+     if checkWin(state):
+         return winners.get(checkWin(state))
+
+     if playerTurn == "ai":
+         value = float("-inf")
+         valuesai=[]
+         indexs = []
+         for i in range(len(state)):
+             for j in range(len(state)):
+                   if state[i][j] == " ":
+                         state[i][j] = 'X'
+                         print(state,'ai')
+                         v = Minmax(state, 'human')
+                         print(v)
+                         valuesai.append(v)
+                         indexs.append((i,j))
+                         state[i][j] = ' '
+         # value = max(value,v)
+         return valuesai
+
+     if playerTurn == "human":
+         value = float("inf")
+         valuesh=[]
+         for i in range(len(state)):
+             for j in range(len(state)):
+                   if state[i][j] == " ":
+                         state[i][j] = 'O'
+                         print(state,'human')
+                         v = Minmax(state, 'ai')
+                         valuesh.append(v)
+                         state[i][j] = ' '
+         # value = min(value,v)
+         return valuesh
+
+
+print(Minmax(tic_tac_toe,'ai'))
+
+# [['O', 'X', ' '],
+#  ['X', 'X', 'O'],
+#  [' ', 'O', ' '], ]
