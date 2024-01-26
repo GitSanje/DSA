@@ -1,6 +1,6 @@
 #include <iostream>
+using namespace std;
 
-// Define a Node structure for the linked list
 struct Node {
     int data;
     Node* next;
@@ -8,16 +8,15 @@ struct Node {
     Node(int value) : data(value), next(nullptr) {}
 };
 
-// Define a LinkedList class
+
 class LinkedList {
 private:
     Node* head;
 
 
     public:
-    // Constructor
     LinkedList() : head(nullptr) {}
-     // Destructor to free memory when the list is destroyed
+     
     ~LinkedList() {
         Node* current = head;
         Node* next;
@@ -29,13 +28,14 @@ private:
         }
     }
 
-    // Function to add a new node to the end of the list
-    void append(int value) {
+    
+    void enquee(int value) {
         Node* newNode = new Node(value);
 
         if (head == nullptr) {
             head = newNode;
-        } else {
+        } 
+        else {
             Node* current = head;
             while (current->next != nullptr) {
                 current = current->next;
@@ -43,11 +43,57 @@ private:
             current->next = newNode;
         }
     }
+    bool search(int key){
+        Node *temp=head;
+        while(temp != nullptr){
+            if( temp->data == key){
+                return true;
+             }
+             temp = temp -> next;
+        }
 
-    // Function to display the elements of the list
+        return false;
+    }
+
+    void push(int value) {
+        Node* newNode = new Node(value);
+        newNode->next = head;
+        head = newNode;
+    }
+    void deletion(int key){
+        if(!search(key)){
+            cout<<"The element is not present in the linkedlist."<<endl;
+        }
+        else
+
+        {   Node* temp = head;
+             if (head == nullptr){
+                return;
+             }
+            if(temp->data == key || temp->next == nullptr){
+                head = head->next;
+                delete temp;
+            }
+            else{
+          
+            while (temp->next->data != key)
+            {      
+                   temp = temp->next;
+            }
+            Node* dnode=temp->next;
+            temp->next = temp->next->next;
+            delete dnode;
+            }
+        }
+        
+
+
+    }
+
+  
     void display() {
         Node* current = head;
-
+    
         while (current != nullptr) {
             std::cout << current->data << " ";
             current = current->next;
@@ -58,17 +104,26 @@ private:
 };
 
 int main() {
-    // Create a linked list
-    LinkedList myList;
+ 
+    LinkedList Queue;
 
-    // Append some elements to the list
-    myList.append(1);
-    myList.append(2);
-    myList.append(3);
+    
+    Queue.enquee(1);
+    Queue.enquee(2);
+    Queue.enquee(3);
 
-    // Display the elements of the list
-    std::cout << "Linked List: ";
-    myList.display();
+    std::cout << "Queue: ";
+    Queue.display();
 
+     LinkedList stack;
+       stack.push(1);
+       stack.push(2);
+       stack.push(3);
+    std::cout << "Stack: ";
+    stack.display();
+    std::cout << stack.search(1);
+    stack.deletion(1);
+    std::cout << "After deletion Stack: ";
+    stack.display();
     return 0;
 }

@@ -33,7 +33,6 @@ class Stack:
     def __str__(self):
         current = self.head
         items =[]
-
         while current:
             items.append(str(current.data))
             current= current.next
